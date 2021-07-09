@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  web:
+    build: ./
+    container_name: apache2
+    tty: true
+    command: sh /files/run.sh
+    volumes:
+      - ./src/:/var/www/html
+      - ./files/:/files
+      - ./apache_conf/:/etc/apache2/sites-available
+    ports:
+      - "8084:80"
+    stdin_open: true
+    tty: true
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apache2.rule=Host(`website.com`)"
+      - "traefik.docker.network=web"
+      - "traefik.port=8084"
+      - "traefik.http.routers.apache2.middlewares=redirect@file" # <== Defining certsresolvers for https- "traefik.default.protocol=http"
+      - "traefik.http.routers.apache2-secured.rule=Host(`website.com`)" # <== Your Domain Name for the https rule 
+      - "traefik.http.routers.apache2-secured.entrypoints=websecure" # <== Defining entrypoint for https, **ref: line 31
+      - "traefik.http.routers.apache2-secured.tls.certresolver=mytlschallenge" # <== Defining certsresolvers for https- "traefik.default.protocol=http"
+    depends_on:
+      - db
+    networks: 
+      - web
+  db:
+    image: mysql
+    container_name: apache2db
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3050:3306"
+    restart: always
+    networks:
+      - web
+    volumes:
+      - ./db/:/var/lib/mysql
+      - ./db_init/:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=blog
+      - MYSQL_USER=mysql_username
+      - MYSQL_PASSWORD=mysql_password
+    
+    
+networks:
+  web:
+    external: true
+
+

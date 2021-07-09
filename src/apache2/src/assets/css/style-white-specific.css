@@ -1,0 +1,13 @@
+#img-social-div a div{
+    filter: invert(1);
+}
+
+.theme-font-color{
+    color: #1f1f1f;
+    transition-property: color;
+    transition-duration: 0.3s;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #161b22 !important;
+}

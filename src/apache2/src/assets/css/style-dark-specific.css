@@ -1,0 +1,9 @@
+body{
+    background-color: #0d1117;
+}
+
+.theme-font-color{
+    color: #fafafa;
+    transition-property: color;
+    transition-duration: 0.3s;
+}

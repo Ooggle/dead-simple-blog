@@ -1,0 +1,25 @@
+DirectoryIndex sitehome.php
+Options -Indexes
+
+<FilesMatch "\.conf.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# disable setup access, to do in production
+#<FilesMatch "^setup.php$">
+#    Order allow,deny
+#    Deny from all
+#</FilesMatch>
+
+RewriteEngine on
+RewriteRule ^whoami/?$ about.php
+RewriteRule ^setup/?$ setup.php
+RewriteRule ^licences/?$ licences.php
+RewriteRule ^posts/?$ posts.php?all=1
+RewriteRule ^post/((.)+) post.php?file=$1 [QSA]
+RewriteRule ^search/? posts.php [QSA]
+RewriteRule ^tag/((.)+)? posts.php?tag=$1 [QSA]
+RewriteRule ^tag$ posts.php?tag=
+
+ErrorDocument 404 /404.php

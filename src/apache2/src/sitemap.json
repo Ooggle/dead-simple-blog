@@ -1,0 +1,26 @@
+{
+    "posts": [
+        {
+            "title": "Second post test",
+            "url": "second_sample",
+            "date": "2021-04-28",
+            "dir": "articles/sample/sample2/",
+            "file": "articles/sample/sample2/second_sample.md",
+            "tags": [
+                "sample",
+                "new_tag"
+            ]
+        },
+        {
+            "title": "sample post title",
+            "url": "sample_post_title",
+            "date": "2021-04-20",
+            "dir": "articles/sample/sample1/",
+            "file": "articles/sample/sample1/sample_post_title.md",
+            "tags": [
+                "sample",
+                "my_super_tag"
+            ]
+        }
+    ]
+}
