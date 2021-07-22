@@ -25,6 +25,11 @@
         var instances = M.FloatingActionButton.init(elems);
     });
 
+    /* go to top button */
+    document.getElementById("go-to-top-button").addEventListener('click', function() {
+        topFunction();
+    });
+
     /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function() {
