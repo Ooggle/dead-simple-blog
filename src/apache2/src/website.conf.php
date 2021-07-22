@@ -12,7 +12,7 @@ $config['short_description'] = 'short description template';
 $config['longer_description'] = 'longer description template';
 $config['copyright_name'] = 'Ooggle';
 $config['image_description'] = 'assets/img/kappa.png';
-$config['rooturl'] = 'http://localhost/blog-template/apache2/src/';
+$config['rooturl'] = 'http://localhost/src/';
 
 /* social link list */
 $config['socials'] = array(

@@ -84,3 +84,12 @@ body, .markdown-body{
     height: 3em;
     background-size: cover;
 }
+
+/* markdown specific style */
+.markdown-body li{
+    list-style-type: circle !important;
+}
+
+.markdown-body ul:not(.browser-default){
+    padding-left: 2em !important;
+}
