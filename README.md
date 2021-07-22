@@ -7,13 +7,14 @@ dead-simple blog template powered by Markdown and PHP
 
 ## Update guide
 
-### You can use the update.sh script to update your apache2/src/ directory by doing the following (thanks to @Kevin-Mizu):   
+### You can use the update.sh script to update your apache2/src/ directory by doing the following (thanks to [@Kevin-Mizu](https://github.com/Kevin-Mizu)):   
 (don't forget to change the path in your command)   
 ```
-wget https://raw.githubusercontent.com/Ooggle/dead-simple-blog/master/update.sh
-chmod u+x ./update.sh
-./update.sh path/to/apache2/src/
+wget https://raw.githubusercontent.com/Ooggle/dead-simple-blog/master/update.sh && chmod u+x ./update.sh
+./update.sh path/to/your/apache2/src/
 ```
+
+### Manual update (not recommanded)
 
 In order to update the website to the latest version, you need to download the latest release, copy the content of the new `src/apache2/src/` in your own `apache2/src/` directory.
 

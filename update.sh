@@ -21,5 +21,5 @@ if [[ -d "${1}" ]]; then
     backup_name="backup_$(date +"%Y-%m-%d-%H%M%S").tar"
     tar c "$dest_path/" -f "$dest_path/../src_backup/$backup_name"
     (cd "$tmp_path/src/apache2/src/" && tar c .) | (cd "$dest_path" && tar xf -)
-    rm -r "$tmp_path"
+    rm -rf "$tmp_path"
 fi
