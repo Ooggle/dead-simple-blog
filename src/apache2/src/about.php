@@ -25,9 +25,26 @@ include('assets/inc/utils.php');
     <br><br>
     <div class="container">
         <div class="markdown-body container">
-            <h2 id="about-me" style="padding-top: 20px">✒ About me.</h2>
-            <p>You can write here a description of yourself, the text is automatically stylized using <em>Markdown</em> style.</p>
+            <?php
+                include("assets/inc/Parsedown.php");
 
+                $Parsedown = new Parsedown();
+            
+                $mdfile = fread(fopen('assets/inc/whoami.php', "r"), filesize('assets/inc/whoami.php'));
+            
+                $mdfile = $Parsedown->text($mdfile);
+            
+                // replace references to local markdown directory with full path from website root
+                $pattern = array();
+                $replacement = array();
+                $pattern[0] = '/<code class="/';
+                $pattern[1] = '/<code>/';
+                $replacement[0] = '<code class="prettyprint ';
+                $replacement[1] = '<code class="prettyprint">';
+                $mdfile = preg_replace($pattern, $replacement, $mdfile);
+            
+                echo $mdfile;
+            ?>
         </div>
     </div>
     
