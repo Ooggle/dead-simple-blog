@@ -61,7 +61,22 @@ else
             </div>
         </div>
     </nav>
-    <br><br>
+    <br>
+    <?php
+    
+    echo '<div class="container">';
+    echo '<p class="theme-font-color">title: ' . $selectedPost->title . '<br>';
+    echo 'date: ' . date("M d, Y", strtotime($selectedPost->date)) . '<br>';
+    echo 'tags: ';
+    foreach (get_tag_list($selectedPost) as $key => $tag)
+    {
+        echo '<a href="' . $config['rooturl'] . 'tag/' . $tag . '">' . $tag . '</a> ';
+    }
+    echo '</p>';
+    echo '</div>';
+
+    ?>
+    <br>
     <?php
 
     echo '<div class="markdown-body container">';
@@ -87,8 +102,6 @@ else
     $mdfile = preg_replace($pattern, $replacement, $mdfile);
 
     //$pattern = '/<\/summary>((.\n?)+)<\/details>/mg';
-
-
 
     echo $mdfile;
 

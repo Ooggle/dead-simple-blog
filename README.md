@@ -7,9 +7,9 @@ dead-simple blog template powered by Markdown and PHP
 
 ## Update guide
 
-In order to update the website to the latest version, you need to copy the content of `src/apache2/src/` in your own `apache2/src/` directory.
+In order to update the website to the latest version, you need to download the latest release, copy the content of the new `src/apache2/src/` in your own `apache2/src/` directory.
 
-:warning: If you don't want all your work to be list, don't copy:   
+:warning: If you don't want all your work to be lost, don't copy:   
 - .htaccess   
 - articles/   
 - favicon.png   
