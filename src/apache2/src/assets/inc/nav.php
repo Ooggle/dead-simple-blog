@@ -40,3 +40,8 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons grey-text text-lighten-">menu</i></a>
     </div>
 </nav>
+<div id="go-to-top-button" class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">keyboard_arrow_up</i>
+    </a>
+</div>

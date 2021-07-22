@@ -14,6 +14,11 @@ body, .markdown-body{
     transition-duration: 0.3s;
 }
 
+#go-to-top-button{
+    transition-duration: 0.4s;
+    transition-property: bottom;
+}
+
 #top-navbar{
     position: sticky;
     transition: top 0.5s;

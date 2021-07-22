@@ -19,6 +19,12 @@
         var instances = M.Tooltip.init(elems);
     });
 
+    /* Floating Action Button */
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems);
+    });
+
     /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function() {
@@ -30,7 +36,19 @@
                 document.getElementById("top-navbar").style.top = "-65px";
             }
         }
+        
+        if(window.pageYOffset < 300) {
+            document.getElementById("go-to-top-button").style.bottom = "-100px";
+        }
+        else {
+            document.getElementById("go-to-top-button").style.bottom = "23px";
+        }
         prevScrollpos = currentScrollPos;
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 	
     function getCookie(cname) {
