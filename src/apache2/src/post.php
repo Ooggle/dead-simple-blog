@@ -78,32 +78,42 @@ else
     ?>
     <br>
     <?php
-
     echo '<div class="markdown-body container">';
-    include("assets/inc/Parsedown.php");
 
-    $Parsedown = new Parsedown();
+    /* CHECK THE FILE EXTENSION */
 
-    $mdfile = fread(fopen($selectedPost->file, "r"), filesize($selectedPost->file));
+    if((substr($selectedPost->file, strlen($selectedPost->file) - 3) === 'php') ||
+    (substr($selectedPost->file, strlen($selectedPost->file) - 4) === 'html'))
+    {
+        include($selectedPost->file);
+    }
+    else if((substr($selectedPost->file, strlen($selectedPost->file) - 2) === 'md'))
+    {
+        include("assets/inc/Parsedown.php");
 
-    $mdfile = $Parsedown->text($mdfile);
+        $Parsedown = new Parsedown();
 
-    // replace references to local markdown directory with full path from website root
-    $pattern = array();
-    $replacement = array();
-    $pattern[0] = '/src="((.)+)" /';
-    $pattern[1] = '/a href="files\/((.)+)">/';
-    $pattern[2] = '/<code class="/';
-    $pattern[3] = '/<code>/';
-    $replacement[0] = 'src="' . $config['rooturl'] . $selectedPost->dir . '$1"';
-    $replacement[1] = 'a href="' . $config['rooturl'] . $selectedPost->dir . 'files/$1">';
-    $replacement[2] = '<code class="prettyprint ';
-    $replacement[3] = '<code class="prettyprint">';
-    $mdfile = preg_replace($pattern, $replacement, $mdfile);
+        $mdfile = fread(fopen($selectedPost->file, "r"), filesize($selectedPost->file));
 
-    //$pattern = '/<\/summary>((.\n?)+)<\/details>/mg';
+        $mdfile = $Parsedown->text($mdfile);
 
-    echo $mdfile;
+        // replace references to local markdown directory with full path from website root
+        $pattern = array();
+        $replacement = array();
+        $pattern[0] = '/src="((.)+)" /';
+        $pattern[1] = '/a href="files\/((.)+)">/';
+        $pattern[2] = '/<code class="/';
+        $pattern[3] = '/<code>/';
+        $replacement[0] = 'src="' . $config['rooturl'] . $selectedPost->dir . '$1"';
+        $replacement[1] = 'a href="' . $config['rooturl'] . $selectedPost->dir . 'files/$1">';
+        $replacement[2] = '<code class="prettyprint ';
+        $replacement[3] = '<code class="prettyprint">';
+        $mdfile = preg_replace($pattern, $replacement, $mdfile);
+
+        //$pattern = '/<\/summary>((.\n?)+)<\/details>/mg';
+
+        echo $mdfile;
+    }
 
     echo '</div>';
     

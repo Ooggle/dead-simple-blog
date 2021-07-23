@@ -1,6 +1,18 @@
 {
     "posts": [
         {
+            "title": "PHP post",
+            "url": "php_example",
+            "date": "2021-07-23",
+            "dir": "articles/sample/sample_php/",
+            "file": "articles/sample/sample_php/php_test.php",
+            "tags": [
+                "sample",
+                "php",
+                "my_super_tag"
+            ]
+        },
+        {
             "title": "Second post test",
             "url": "second_sample",
             "date": "2021-04-28",

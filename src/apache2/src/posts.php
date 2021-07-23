@@ -77,7 +77,21 @@ switch ($type) {
 <html lang="en">
 <head>
     <?php include('assets/inc/global_head.php'); ?>
-    <title>Posts | <?php echo $config['title'] ?></title>
+    <?php
+        switch ($type) {
+            case 'query':
+                echo '<title>Search: ' . $q . ' | ' . $config['title'] . '</title>';
+                break;
+            
+            case 'tag':
+                echo '<title>' . $q . ' | ' . $config['title'] . '</title>';
+                break;
+
+            case 'all':
+                echo '<title>All posts | ' . $config['title'] . '</title>';
+                break;
+        }
+    ?>
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>
@@ -87,7 +101,6 @@ switch ($type) {
                 <div class="col s12">
                     <a href="<?php echo $config['rooturl'] ?>" class="breadcrumb"><?php echo $config['long_title'] ?></a>
                     <?php
-
                         switch ($type) {
                             case 'query':
                                 echo '<a href="' . $config['rooturl'] . 'posts/" class="breadcrumb">search</a>';
@@ -103,7 +116,6 @@ switch ($type) {
                                 echo '<a href="' . $config['rooturl'] . 'posts/" class="breadcrumb">posts</a>';
                                 break;
                         }
-
                     ?>
                 </div>
             </div>
