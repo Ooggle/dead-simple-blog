@@ -77,6 +77,7 @@ switch ($type) {
 <html lang="en">
 <head>
     <?php include('assets/inc/global_head.php'); ?>
+    <meta property="og:image" content="<?php echo return_url($config['profile_picture']) ?>">
     <?php
         switch ($type) {
             case 'query':

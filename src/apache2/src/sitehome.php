@@ -10,6 +10,7 @@ include('assets/inc/utils.php');
     <?php include('assets/inc/global_head.php'); ?>
     <title><?php echo $config['title'] ?></title>
     <meta property="og:title" content="<?php echo $config['longer_description'] ?>">
+    <meta property="og:image" content="<?php echo return_url($config['profile_picture']) ?>">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>

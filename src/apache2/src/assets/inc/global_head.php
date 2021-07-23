@@ -11,7 +11,6 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="<?php echo $config['long_title'] ?>">
-<meta property="og:image" content="<?php echo return_url($config['profile_picture']) ?>">
 
 <style>
     .markdown-body img{

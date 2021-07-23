@@ -10,6 +10,7 @@ include('assets/inc/utils.php');
     <?php include('assets/inc/global_head.php'); ?>
     <title>Whoami | Ooggle</title>
     <meta property="og:title" content="Whoami">
+    <meta property="og:image" content="<?php echo return_url($config['profile_picture']) ?>">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>

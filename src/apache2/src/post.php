@@ -41,6 +41,62 @@ else
     return_404();
 }
 
+
+$og_image = NULL;
+
+/* CHECK THE FILE EXTENSION */
+if((substr($selectedPost->file, strlen($selectedPost->file) - 3) === 'php') ||
+(substr($selectedPost->file, strlen($selectedPost->file) - 4) === 'html'))
+{
+    $file = fread(fopen($selectedPost->file, "r"), filesize($selectedPost->file));
+
+    $re = '/<img src="(.+?)(?=\")/m';
+    preg_match($re, $mdfile, $matches, PREG_OFFSET_CAPTURE, 0);
+    if(isset($matches[1][0]) && $matches[1][0] !== '')
+    {
+        $og_image = return_url($matches[1][0]);
+    }
+}
+else if((substr($selectedPost->file, strlen($selectedPost->file) - 2) === 'md'))
+{
+    include("assets/inc/Parsedown.php");
+
+    $Parsedown = new Parsedown();
+
+    $mdfile = fread(fopen($selectedPost->file, "r"), filesize($selectedPost->file));
+
+    $mdfile = $Parsedown->text($mdfile);
+
+    // replace references to local markdown directory with full path from website root
+    $pattern = array();
+    $replacement = array();
+    $pattern[0] = '/src="((.)+)" /';
+    $pattern[1] = '/a href="files\/((.)+)">/';
+    $pattern[2] = '/<code class="/';
+    $pattern[3] = '/<code>/';
+    $replacement[0] = 'src="' . $config['rooturl'] . $selectedPost->dir . '$1"';
+    $replacement[1] = 'a href="' . $config['rooturl'] . $selectedPost->dir . 'files/$1">';
+    $replacement[2] = '<code class="prettyprint ';
+    $replacement[3] = '<code class="prettyprint">';
+    $mdfile = preg_replace($pattern, $replacement, $mdfile);
+
+    /* og image search */
+    $re = '/<img src="(.+?)(?=\")/m';
+    preg_match($re, $mdfile, $matches, PREG_OFFSET_CAPTURE, 0);
+    if(isset($matches[1][0]) && $matches[1][0] !== '')
+    {
+        $og_image = return_url($matches[1][0]);
+    }
+
+    //$pattern = '/<\/summary>((.\n?)+)<\/details>/mg';
+}
+
+/* OG image choice */
+if($og_image === NULL)
+{
+    $og_image = return_url($config['profile_picture']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +109,7 @@ else
         echo ' $tag';
     }
     ?>">
+    <meta property="og:image" content="<?php echo $og_image ?>">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>
@@ -95,29 +152,6 @@ else
     }
     else if((substr($selectedPost->file, strlen($selectedPost->file) - 2) === 'md'))
     {
-        include("assets/inc/Parsedown.php");
-
-        $Parsedown = new Parsedown();
-
-        $mdfile = fread(fopen($selectedPost->file, "r"), filesize($selectedPost->file));
-
-        $mdfile = $Parsedown->text($mdfile);
-
-        // replace references to local markdown directory with full path from website root
-        $pattern = array();
-        $replacement = array();
-        $pattern[0] = '/src="((.)+)" /';
-        $pattern[1] = '/a href="files\/((.)+)">/';
-        $pattern[2] = '/<code class="/';
-        $pattern[3] = '/<code>/';
-        $replacement[0] = 'src="' . $config['rooturl'] . $selectedPost->dir . '$1"';
-        $replacement[1] = 'a href="' . $config['rooturl'] . $selectedPost->dir . 'files/$1">';
-        $replacement[2] = '<code class="prettyprint ';
-        $replacement[3] = '<code class="prettyprint">';
-        $mdfile = preg_replace($pattern, $replacement, $mdfile);
-
-        //$pattern = '/<\/summary>((.\n?)+)<\/details>/mg';
-
         echo $mdfile;
     }
 
