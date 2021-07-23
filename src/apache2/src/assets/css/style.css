@@ -61,22 +61,22 @@ body, .markdown-body{
 
 /* SEARCHBOX */
 
-#search{
+#search-wide{
     width: 0px;
     transition-property: all;
     transition-duration: 0.5s;
 }
 
-#search-li:hover #search{
+#search-li-wide:hover #search-wide{
     background-color: #f5f5f5;
     width: 170px;
 }
 
-#search-li:hover *{
+#search-li-wide:hover *{
     color: #444;
 }
 
-#search:focus{
+#search-wide:focus{
     background-color: #f5f5f5;
     width: 170px;
 }

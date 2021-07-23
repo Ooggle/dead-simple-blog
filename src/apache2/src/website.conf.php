@@ -18,6 +18,14 @@ $config['rooturl'] = 'http://localhost/src/';
 /* center images in posts */
 $config['center_images'] = false;
 
+/* navbar menu (you cannot create submenu of submenu) */
+$config['navbar'] = array(
+    '/new_tag' => 'tag/new_tag',
+    '/posts' => [
+        '/samples' => 'tag/sample'
+    ]
+);
+
 /* social link list */
 $config['socials'] = array(
 	array(
