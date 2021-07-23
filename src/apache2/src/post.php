@@ -85,7 +85,7 @@ else if((substr($selectedPost->file, strlen($selectedPost->file) - 2) === 'md'))
     preg_match($re, $mdfile, $matches, PREG_OFFSET_CAPTURE, 0);
     if(isset($matches[1][0]) && $matches[1][0] !== '')
     {
-        $og_image = return_url($matches[1][0]);
+        $og_image = $matches[1][0];
     }
 
     //$pattern = '/<\/summary>((.\n?)+)<\/details>/mg';
