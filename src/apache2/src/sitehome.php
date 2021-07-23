@@ -17,7 +17,7 @@ include('assets/inc/utils.php');
         <div class="row">
             <div class="col s12 m6 offset-m3">
                 <div style="width: 250px; margin: auto;">
-                    <a href="<?php echo $config['rooturl'] ?>whoami"><img src="<?php echo return_url($config['profile_picture']) ?>" alt="<?php echo $config['title'] ?>" class="circle responsive-img" style="width: 250px;"></a>
+                    <a href="<?php echo $config['rooturl'] ?>whoami"><img src="<?php echo return_url($config['profile_picture']) ?>" alt="<?php echo $config['title'] ?>" class="circle responsive-img" style="width: 250px; <?php echo (isset($config['profile_picture_border']) && $config['profile_picture_border'] == true) ? 'border: solid;' : '' ?>"></a>
                 </div>
                 <br>
                 <div id="img-social-div" class="icon-section center-align">

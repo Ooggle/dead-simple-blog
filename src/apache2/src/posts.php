@@ -42,12 +42,19 @@ switch ($type) {
         $post_list = get_post_list();
         foreach($post_list as $key => $post)
         {
-            foreach($post->tags as $key => $tag)
+            $is_ok = true;
+            foreach(explode(' ', $q) as $key => $tag)
             {
-                if($tag === $q)
+                if(!in_array($tag, $post->tags) && $tag !== '')
                 {
-                    array_push($final_post_list, $post);
+                    $is_ok = false;
+                    break;
                 }
+            }
+
+            if($is_ok)
+            {
+                array_push($final_post_list, $post);
             }
         }
         break;
