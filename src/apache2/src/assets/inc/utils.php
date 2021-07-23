@@ -14,15 +14,32 @@ function get_post_list($count = -1)
     $list = array();
 
     // parse sitemap
-    $sitemap = json_decode(fread(fopen("sitemap.json", "r"), filesize("sitemap.json")));
-    foreach($sitemap->posts as $key => $post)
+    try
     {
-        if($count !== -1 && $i == 0)
+        $sitemap = json_decode(fread(fopen("sitemap.json", "r"), filesize("sitemap.json")));
+        if($sitemap != NULL)
         {
-            break;
+            foreach($sitemap->posts as $key => $post)
+            {
+                if($count !== -1 && $i == 0)
+                {
+                    break;
+                }
+                if(!(isset($post->hidden) && $post->hidden == true))
+                {
+                    array_push($list, $post);
+                }
+                $i -= 1;
+            }
         }
-        array_push($list, $post);
-        $i -= 1;
+        else
+        {
+            echo '<h4 class="theme-font-color">The sitemap.json file contains errors.</h4>';
+        }
+    }
+    catch(exception $e)
+    {
+        echo '<h4 class="theme-font-color">The sitemap.json file contains errors.</h4>';
     }
 
     return $list;
@@ -33,8 +50,8 @@ function get_tag_list()
     $list = array();
 
     // parse sitemap
-    $sitemap = json_decode(fread(fopen("sitemap.json", "r"), filesize("sitemap.json")));
-    foreach($sitemap->posts as $key => $post)
+    $posts = get_post_list();
+    foreach($posts as $key => $post)
     {
         foreach($post->tags as $key => $tag)
         {

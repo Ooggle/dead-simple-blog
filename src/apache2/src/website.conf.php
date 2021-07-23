@@ -14,6 +14,9 @@ $config['copyright_name'] = 'Ooggle';
 $config['image_description'] = 'assets/img/kappa.png';
 $config['rooturl'] = 'http://localhost/src/';
 
+/* center images in posts */
+$config['center_images'] = false;
+
 /* social link list */
 $config['socials'] = array(
 	array(

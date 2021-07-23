@@ -1,4 +1,12 @@
+![header](header.png)
+
 # dead-simple-blog
+
+[![img release](https://img.shields.io/github/commit-activity/m/Ooggle/dead-simple-blog.svg?sanitize=true&color=blue)](#)
+[![img last commit](https://img.shields.io/github/last-commit/Ooggle/dead-simple-blog.svg)](#)
+[![img last release](https://img.shields.io/github/release/Ooggle/dead-simple-blog.svg?color=red)](#)
+[![img last release](https://img.shields.io/twitter/follow/Ooggule.svg?style=social)](https://twitter.com/Ooggule)
+
 dead-simple blog template powered by Markdown and PHP
 
 ## Installation and usage comming soon...

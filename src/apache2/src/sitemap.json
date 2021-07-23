@@ -12,6 +12,15 @@
             ]
         },
         {
+            "title": "hidden post",
+            "url": "not_for_use",
+            "date": "2021-04-25",
+            "dir": "articles/null/",
+            "file": "articles/null.md",
+            "hidden": true,
+            "tags": []
+        },
+        {
             "title": "sample post title",
             "url": "sample_post_title",
             "date": "2021-04-20",
