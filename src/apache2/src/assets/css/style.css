@@ -17,6 +17,7 @@ body, .markdown-body{
 #go-to-top-button{
     transition-duration: 0.4s;
     transition-property: bottom;
+    bottom: -100px;
 }
 
 #top-navbar{

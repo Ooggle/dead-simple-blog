@@ -1,28 +1,36 @@
 <script src="<?php echo $config['rooturl'] ?>assets/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
 <script>
-    /* mobile navbar */
     document.addEventListener('DOMContentLoaded', function() {
+        /* mobile navbar */
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems);
-    });
 
-    /* dropdown */
-    document.addEventListener('DOMContentLoaded', function() {
+        /* dropdown */
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems, {"constrainWidth": false});
-    });
 
-    /* tooltips */
-    document.addEventListener('DOMContentLoaded', function() {
+        /* tooltips */
         var elems = document.querySelectorAll('.tooltipped');
         var instances = M.Tooltip.init(elems);
-    });
 
-    /* Floating Action Button */
-    document.addEventListener('DOMContentLoaded', function() {
+        /* Floating Action Button */
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems);
+
+        /* check for navbar to show up or not */
+        if (window.pageYOffset < 300) {
+            document.getElementById("top-navbar").style.top = "0";
+        } else {
+            document.getElementById("top-navbar").style.top = "-65px";
+        }
+
+        /* check for go-to-top button to show up or not */
+        if(window.pageYOffset < 300) {
+            document.getElementById("go-to-top-button").style.bottom = "-100px";
+        } else {
+            document.getElementById("go-to-top-button").style.bottom = "23px";
+        }
     });
 
     /* go to top button */
@@ -36,16 +44,14 @@
         var currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
             document.getElementById("top-navbar").style.top = "0";
-        } else {
-            if(window.pageYOffset > 300) {
-                document.getElementById("top-navbar").style.top = "-65px";
-            }
+        } else if(currentScrollPos > 300) {
+            document.getElementById("top-navbar").style.top = "-65px";
         }
         
-        if(window.pageYOffset < 300) {
+        /* check for go-to-top button to show up or not */
+        if(currentScrollPos < 300) {
             document.getElementById("go-to-top-button").style.bottom = "-100px";
-        }
-        else {
+        } else {
             document.getElementById("go-to-top-button").style.bottom = "23px";
         }
         prevScrollpos = currentScrollPos;
