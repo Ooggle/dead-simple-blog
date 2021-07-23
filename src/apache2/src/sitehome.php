@@ -9,6 +9,7 @@ include('assets/inc/utils.php');
 <head>
     <?php include('assets/inc/global_head.php'); ?>
     <title><?php echo $config['title'] ?></title>
+    <meta property="og:title" content="<?php echo $config['longer_description'] ?>">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>

@@ -8,6 +8,11 @@
 <?php echo (isset($_COOKIE['dark-mode']) && $_COOKIE['dark-mode'] == 0) ? '<link rel="stylesheet" href="' . $config['rooturl'] . 'assets/css/github-markdown.css" id="markdown-style">' : '<link rel="stylesheet" href="' . $config['rooturl'] . 'assets/css/github-markdown-dark.css" id="markdown-style">' ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $config['rooturl'] ?>assets/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="<?php echo $config['long_title'] ?>">
+<meta property="og:image" content="<?php echo return_url($config['profile_picture']) ?>">
+
 <style>
     .markdown-body img{
         <?php echo (isset($config['center_images']) && $config['center_images'] == true) ? 'display: block; margin: auto;' : '' ?>

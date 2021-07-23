@@ -3,6 +3,7 @@
 <head>
     <?php include('assets/inc/global_head.php'); ?>
     <title>404 Not Found | <?php echo $config['title'] ?></title>
+    <meta property="og:title" content="404 Not Found">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>

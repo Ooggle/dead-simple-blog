@@ -47,6 +47,12 @@ else
 <head>
     <?php include('assets/inc/global_head.php'); ?>
     <title><?php echo $selectedPost->title ?> | <?php echo $config['title'] ?></title>
+    <meta property="og:title" content="<?php echo $selectedPost->title ?>. Tags:<?php
+    foreach (get_tag_list($selectedPost) as $key => $tag)
+    {
+        echo ' $tag';
+    }
+    ?>">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>

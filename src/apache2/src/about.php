@@ -9,6 +9,7 @@ include('assets/inc/utils.php');
 <head>
     <?php include('assets/inc/global_head.php'); ?>
     <title>Whoami | Ooggle</title>
+    <meta property="og:title" content="Whoami">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>

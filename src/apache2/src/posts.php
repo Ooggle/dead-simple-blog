@@ -81,14 +81,17 @@ switch ($type) {
         switch ($type) {
             case 'query':
                 echo '<title>Search: ' . $q . ' | ' . $config['title'] . '</title>';
+                echo '<meta property="og:title" content="Search: ' . $q . '">';
                 break;
             
             case 'tag':
                 echo '<title>' . $q . ' | ' . $config['title'] . '</title>';
+                echo '<meta property="og:title" content="Tag: ' . $q . '">';
                 break;
 
             case 'all':
                 echo '<title>All posts | ' . $config['title'] . '</title>';
+                echo '<meta property="og:title" content="All posts">';
                 break;
         }
     ?>
