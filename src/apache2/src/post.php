@@ -104,9 +104,15 @@ if($og_image === NULL)
     <?php include('assets/inc/global_head.php'); ?>
     <title><?php echo $selectedPost->title ?> | <?php echo $config['title'] ?></title>
     <meta property="og:title" content="<?php echo $selectedPost->title ?>. Tags:<?php
-    foreach (get_tag_list($selectedPost) as $key => $tag)
+    $i = 0;
+    foreach(get_tag_list($selectedPost) as $key => $tag)
     {
-        echo " {$tag}";
+        if($i == 0)
+        {
+            $i += 1;
+            echo " {$tag}";
+        }
+        echo " - {$tag}";
     }
     ?>">
     <meta property="og:image" content="<?php echo $og_image ?>">
