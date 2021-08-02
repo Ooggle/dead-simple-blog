@@ -9,6 +9,7 @@ $config['long_title'] = 'template.com';
 /* picture displayed on the main page */
 $config['profile_picture'] = 'assets/img/kappa.png';
 $config['profile_picture_border'] = true;
+$config['profile_picture_border_color'] = '';
 $config['short_description'] = 'short description template';
 $config['longer_description'] = 'longer description template';
 $config['copyright_name'] = 'Ooggle';
