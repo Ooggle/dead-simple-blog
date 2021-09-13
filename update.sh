@@ -10,7 +10,7 @@ if [[ -d "${1}" ]]; then
 
     git clone https://github.com/Ooggle/dead-simple-blog.git $tmp_path
     
-    for file in ".htaccess" "articles" "favicon.png" "website.conf.php" "sitemap.json"
+    for file in "assets/inc/whoami.php" ".htaccess" "articles" "favicon.png" "website.conf.php" "sitemap.json"
     do
         rm -r "$tmp_path/src/apache2/src/$file"
     done
