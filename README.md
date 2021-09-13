@@ -27,6 +27,7 @@ wget https://raw.githubusercontent.com/Ooggle/dead-simple-blog/master/update.sh 
 In order to update the website to the latest version, you need to download the latest release, copy the content of the new `src/apache2/src/` in your own `apache2/src/` directory.
 
 :warning: If you don't want all your work to be lost, don't copy:   
+- assets/inc/whoami.php
 - .htaccess   
 - articles/   
 - favicon.png   
