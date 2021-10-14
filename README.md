@@ -9,7 +9,7 @@
 
 dead-simple blog template powered by Markdown and PHP
 
-## Installation and usage comming soon...
+## Installation and usage coming soon...
 
 <br>
 
