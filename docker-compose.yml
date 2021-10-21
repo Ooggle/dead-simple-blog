@@ -65,8 +65,8 @@ services:
     networks:
       - web
     volumes:
-      - ./website/db/:/var/lib/mysql
-      - ./website/db_init/:/docker-entrypoint-initdb.d
+      - ./db/:/var/lib/mysql
+      - ./db_init/:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=root_password
       - MYSQL_DATABASE=blog
