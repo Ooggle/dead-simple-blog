@@ -1,4 +1,4 @@
-![header](header.png)
+![header](images/header.png)
 
 # dead-simple-blog
 

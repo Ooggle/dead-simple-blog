@@ -1,14 +1,42 @@
 version: '3'
-
 services:
+  traefik:
+    image: traefik:v2.2
+    container_name: traefik
+    command: 
+      - "--api.dashboard=false"
+      - "--providers.docker.exposedbydefault=true"
+      - "--providers.docker=true"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--providers.file.filename=/https.yaml" # <== http redirect to https
+      - "--certificatesresolvers.mytlschallenge.acme.tlschallenge=true" # <== Enable TLS-ALPN-01 to generate and renew ACME certs
+      - "--certificatesresolvers.mytlschallenge.acme.email=example@email.com" # <== Setting email for certs
+      - "--certificatesresolvers.mytlschallenge.acme.storage=/letsencrypt/acme.json"
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./letsencrypt:/letsencrypt
+      - ./dynamic.yaml:/dynamic.yaml
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.port=8085"
+    networks:
+      - web
+
   web:
     build: ./
-    container_name: apache2
+    container_name: blog
     tty: true
     command: sh /files/run.sh
     volumes:
-      - ./src/:/var/www/html
-      - ./files/:/files
+      - ./blog/:/var/www/html
+      - ./docker_init/:/files
       - ./apache_conf/:/etc/apache2/sites-available
     ports:
       - "8084:80"
@@ -28,27 +56,24 @@ services:
       - db
     networks: 
       - web
+
   db:
     image: mysql
-    container_name: apache2db
+    container_name: blogdb
     command: --default-authentication-plugin=mysql_native_password
-    ports:
-      - "3050:3306"
     restart: always
     networks:
       - web
     volumes:
-      - ./db/:/var/lib/mysql
-      - ./db_init/:/docker-entrypoint-initdb.d
+      - ./website/db/:/var/lib/mysql
+      - ./website/db_init/:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=root_password
       - MYSQL_DATABASE=blog
       - MYSQL_USER=mysql_username
       - MYSQL_PASSWORD=mysql_password
-    
-    
+
 networks:
   web:
     external: true
-
 

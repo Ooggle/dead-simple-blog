@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $# -ne 1 ]]; then
-    echo "Usage : ${0} PATH to apache2/src/"
+    echo "Usage : ${0} PATH to blog/"
 fi
 
 if [[ -d "${1}" ]]; then
@@ -12,15 +12,15 @@ if [[ -d "${1}" ]]; then
     
     for file in "assets/inc/whoami.php" ".htaccess" "articles" "favicon.png" "website.conf.php" "sitemap.json"
     do
-        rm -r "$tmp_path/src/apache2/src/$file"
+        rm -r "$tmp_path/blog/$file"
     done
     
-    if ! [[ -d "$dest_path/../src_backup" ]]; then
-        mkdir "$dest_path/../src_backup/"
+    if ! [[ -d "$dest_path/../backup_update" ]]; then
+        mkdir "$dest_path/../backup_update/"
     fi
     backup_name="backup_$(date +"%Y-%m-%d-%H%M%S").tar"
-    tar c "$dest_path/" -f "$dest_path/../src_backup/$backup_name"
-    (cd "$tmp_path/src/apache2/src/" && tar c .) | (cd "$dest_path" && tar xf -)
+    tar c "$dest_path/" -f "$dest_path/../backup_update/$backup_name"
+    (cd "$tmp_path/blog/" && tar c .) | (cd "$dest_path" && tar xf -)
     rm -rf "$tmp_path"
 else
     echo "Directory does not exist or file selected, exiting..."

@@ -3,6 +3,7 @@
 $config = array();
 
 /* website informations */
+$config['rooturl'] = 'https://example.com/';
 $config['title'] = 'template';
 $config['long_title'] = 'template.com';
 
@@ -14,7 +15,6 @@ $config['short_description'] = 'short description template';
 $config['longer_description'] = 'longer description template';
 $config['copyright_name'] = 'Ooggle';
 $config['image_description'] = 'assets/img/kappa.png';
-$config['rooturl'] = 'http://localhost/src/';
 
 /* center images in posts */
 $config['center_images'] = false;
