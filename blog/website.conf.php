@@ -60,8 +60,8 @@ $config['friends'] = array(
 $config['enable_stats'] = false;
 
 /* db */
-$config['db_host'] = 'localhost';
-$config['db_name'] = 'name';
+$config['db_host'] = 'blogdb';
+$config['db_name'] = 'blog';
 $config['db_user'] = 'user';
 $config['db_password'] = 'password';
 
