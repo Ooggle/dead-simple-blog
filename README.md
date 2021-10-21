@@ -9,7 +9,31 @@
 
 dead-simple blog template powered by Markdown and PHP
 
-## Installation and usage coming soon...
+## Installation
+
+```sh
+apt install git
+git clone
+cd dead-simple-blog
+
+usermod -a -G docker {user}
+# disconnect/reconnect after this command
+```
+
+Change domain name "website.com" in `docker-compose.yaml`, `apache_conf` and `blog/website.conf.php`.
+
+change mysql passwords and usernames in `docker-compose.yaml` and `blog/website.conf.php`.
+
+```sh
+cd dead-simple-blog
+docker network create web
+docker-compose up -d
+# Here we go!
+```
+
+<br>
+
+## Usage coming soon...
 
 <br>
 
