@@ -45,19 +45,36 @@ function get_post_list($count = -1)
     return $list;
 }
 
-function get_tag_list()
+function get_tag_list($unique_post = '0')
 {
     $list = array();
 
     // parse sitemap
     $posts = get_post_list();
-    foreach($posts as $key => $post)
+    if($unique_post !== '0')
     {
-        foreach($post->tags as $key => $tag)
+        foreach($posts as $key => $post)
         {
-            if(array_search($tag, $list, true) === false)
+            if($post->url === $unique_post)
             {
-                array_push($list, $tag);
+                foreach($post->tags as $key => $tag)
+                {
+                    array_push($list, $tag);
+                }
+                break;
+            }
+        }
+    }
+    else
+    {
+        foreach($posts as $key => $post)
+        {
+            foreach($post->tags as $key => $tag)
+            {
+                if(array_search($tag, $list, true) === false)
+                {
+                    array_push($list, $tag);
+                }
             }
         }
     }
