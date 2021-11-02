@@ -22,7 +22,7 @@ if(isset($_GET['file']) && $_GET['file'] != '')
 
             if(isset($sitemap->posts[$key + 1])) {
                 $followingPost = $sitemap->posts[$key + 1];
-            } 
+            }
         }
     }
     //print_r($selectedPost);
@@ -105,7 +105,7 @@ if($og_image === NULL)
     <title><?php echo $selectedPost->title ?> | <?php echo $config['title'] ?></title>
     <meta property="og:title" content="<?php echo $selectedPost->title ?>. Tags:<?php
     $i = 0;
-    foreach(get_tag_list($selectedPost) as $key => $tag)
+    foreach(get_tag_list($selectedPost->url) as $key => $tag)
     {
         if($i == 0)
         {
@@ -132,12 +132,12 @@ if($og_image === NULL)
     </nav>
     <br>
     <?php
-    
+
     echo '<div class="container">';
     echo '<p class="theme-font-color">title: ' . $selectedPost->title . '<br>';
     echo 'date: ' . date("M d, Y", strtotime($selectedPost->date)) . '<br>';
     echo 'tags: ';
-    foreach (get_tag_list($selectedPost) as $key => $tag)
+    foreach (get_tag_list($selectedPost->url) as $key => $tag)
     {
         echo '<a href="' . $config['rooturl'] . 'tag/' . $tag . '">' . $tag . '</a> ';
     }
@@ -162,7 +162,7 @@ if($og_image === NULL)
     }
 
     echo '</div>';
-    
+
     ?>
     <br>
     <div class="grey darken-4">
