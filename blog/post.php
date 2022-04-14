@@ -119,7 +119,7 @@ if($og_image === NULL)
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>
-    <nav style="background-color: <?php echo $config['sub_accent_color'] ?>">
+    <nav style="background-color: <?php echo $config['sub_accent_color'] ?>; overflow: hidden">
         <div class="container">
             <div class="nav-wrapper">
                 <div class="col s12">
