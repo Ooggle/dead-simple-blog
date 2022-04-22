@@ -14,6 +14,14 @@ body, .markdown-body{
     transition-duration: 0.3s;
 }
 
+a:hover{
+    text-decoration: underline;
+}
+
+nav a:hover{
+    text-decoration: none;
+}
+
 #go-to-top-button{
     transition-duration: 0.4s;
     transition-property: bottom;
