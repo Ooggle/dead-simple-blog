@@ -8,7 +8,7 @@ include('assets/inc/utils.php');
 <html lang="en">
 <head>
     <?php include('assets/inc/global_head.php'); ?>
-    <title>Whoami | Ooggle</title>
+    <title>Whoami | <?php echo $config['title'] ?></title>
     <meta property="og:title" content="Whoami">
     <meta property="og:image" content="<?php echo return_url($config['profile_picture']) ?>">
 </head>
