@@ -18,8 +18,12 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            © 2021 <?php echo $config['copyright_name'] ?>
+            © <span id="current-year">2021</span> <?php echo $config['copyright_name'] ?>
             <a class="grey-text text-lighten-4 right" href="<?php echo $config['rooturl'] ?>licences">licences</a>
         </div>
     </div>
 </footer>
+<script>
+    // display current year
+    document.getElementById("current-year").innerHTML = new Date().getFullYear();
+</script>
