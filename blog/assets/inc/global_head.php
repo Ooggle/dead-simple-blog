@@ -12,6 +12,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="<?php echo $config['long_title'] ?>">
 
+<meta name="theme-color" content="<?php echo $config['sub_accent_color'] ?>"/>
+
 <style>
     .markdown-body img{
         <?php echo (isset($config['center_images']) && $config['center_images'] == true) ? 'display: block; margin: auto;' : '' ?>
