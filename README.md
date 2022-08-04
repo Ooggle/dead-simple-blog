@@ -33,13 +33,25 @@ docker-compose up -d
 
 <br>
 
-## Usage coming soon...
+## Usage
+
+Everything lies in `website.conf.php` as well as `sitemap.json` files in blog/.
+
+#### website.conf.php
+
+In this file, you can setup everything related to the website customization (title, description, header, profile picture, colors...). The variables names are self explanables.
+
+#### sitemap.json
+
+This is where you add your articles. There are example of how to do it in the sample file. Basically, you can add articles which point to etheir `.md` or `.html/.php` file, and the engine will take care of displaying it on the website. Note that you can add `"hidden": true` to an article to hide it from the list (the article can still be accessed via it's URL). The examples shows the different possibilities you have to create perfect articles!
+
+Please be aware that the articles are not sorted by date, but by apparition, meaning the article at the top of the file will be the first to show up.
 
 <br>
 
 ## Update guide
 
-### You can use the update.sh script to update your apache2/src/ directory by doing the following (thanks to [@Kevin-Mizu](https://github.com/Kevin-Mizu)):   
+#### You can use the update.sh script to update your apache2/src/ directory by doing the following (thanks to [@Kevin-Mizu](https://github.com/Kevin-Mizu)):   
 (don't forget to change the path in your command)   
 ```
 wget https://raw.githubusercontent.com/Ooggle/dead-simple-blog/master/update.sh && chmod u+x ./update.sh
