@@ -110,12 +110,25 @@ if($og_image === NULL)
         if($i == 0)
         {
             $i += 1;
-            echo " {$tag}";
+            echo "{$tag}";
         }
         echo " - {$tag}";
     }
     ?>">
     <meta property="og:image" content="<?php echo $og_image ?>">
+    <meta name="description" content="<?php echo $selectedPost->title ?>">
+    <meta name="keywords" content="<?php
+    $i = 0;
+    foreach(get_tag_list($selectedPost->url) as $key => $tag)
+    {
+        if($i == 0)
+        {
+            $i += 1;
+            echo "{$tag}";
+        }
+        echo ", {$tag}";
+    }
+    ?>">
 </head>
 <body>
     <?php include('assets/inc/nav.php') ?>
