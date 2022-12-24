@@ -28,8 +28,8 @@ function get_post_list($count = -1)
                 if(!(isset($post->hidden) && $post->hidden == true))
                 {
                     array_push($list, $post);
+                    $i -= 1;
                 }
-                $i -= 1;
             }
         }
         else
@@ -164,7 +164,7 @@ function log_current_page()
         $client_info = NULL;
     }
 
-    if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '')
+    if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/')
     {
         $endpoint = htmlspecialchars($_SERVER['REQUEST_URI']);
 
