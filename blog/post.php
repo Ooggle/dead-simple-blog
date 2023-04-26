@@ -11,6 +11,13 @@ if(isset($_GET['file']) && $_GET['file'] != '')
     $selectedPost = '-1';
     $followingPost = '-1';
     $sitemap = json_decode(fread(fopen("sitemap.json", "r"), filesize("sitemap.json")));
+    
+    foreach ($sitemap->posts as $key => $post) {
+	    if(isset($post->hidden) && $post->hidden == true && $_GET["file"] !== $post->url) {
+	        unset($sitemap->posts[$key]);
+	    }
+    }
+    
     foreach ($sitemap->posts as $key => $post) {
         if($_GET['file'] === $post->url)
         {

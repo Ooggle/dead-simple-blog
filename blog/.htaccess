@@ -1,7 +1,7 @@
 DirectoryIndex sitehome.php
 Options -Indexes
 
-<FilesMatch "\.conf.php$">
+<FilesMatch "\.conf.php|sitemap.json$">
     Order allow,deny
     Deny from all
 </FilesMatch>
