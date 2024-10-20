@@ -77,7 +77,7 @@ else if((substr($selectedPost->file, strlen($selectedPost->file) - 2) === 'md'))
     // replace references to local markdown directory with full path from website root
     $pattern = array();
     $replacement = array();
-    $pattern[0] = '/src="((.)+)" /';
+    $pattern[0] = '/<img src="((.)+)"/';
     $pattern[1] = '/a href="files\/((.)+)">/';
     $pattern[2] = '/<code class="/';
     $pattern[3] = '/<code>/';
